@@ -23,7 +23,7 @@ public class DbManager {
 
     public static void initDatabase(){
         createConnectionDB();
-        dropTable();
+//        dropTable();
         createTable();
         closeConnectionDB();
     }

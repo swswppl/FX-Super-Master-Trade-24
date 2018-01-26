@@ -25,24 +25,24 @@ public class ClientModel {
     public static final String FIELD_NAME_EMAIL = "email";
     public static final String FIELD_NAME_PHONE = "phone";
 
-    private ObservableList<ClientMapper> clientList = FXCollections.observableArrayList();
-    private ObjectProperty<ClientMapper> client = new SimpleObjectProperty<>();
+    private ObjectProperty<ClientMapper> clientMapperObjectProperty = new SimpleObjectProperty<>(new ClientMapper());
+    private ObjectProperty<ClientMapper> clientMapperObjectPropertyEdit = new SimpleObjectProperty<>(new ClientMapper());
+
+    private ObservableList<ClientMapper> clientMapperObservableList = FXCollections.observableArrayList();
+
 
     public void init() throws ApplicationException {
         ClientDao clientDao = new ClientDao(DbManager.getConnectionSource());
-        List<Client> clients = clientDao.queryForAll(Client.class);
+        List<Client> clientList = clientDao.queryForAll(Client.class);
 
-        initClientList(clients);
+        this.clientMapperObservableList.clear();
+        clientList.forEach(client -> {
+            ClientMapper clientMapper = ConventerClient.convertToClientMapper(client);
+            this.clientMapperObservableList.add(clientMapper);
+        });
         DbManager.closeConnectionDB();
     }
 
-    private void initClientList(List<Client> clients) {
-        this.clientList.clear();
-        clients.forEach(c->{
-            ClientMapper clientMapper = ConventerClient.convertToClientMapper(c);
-            this.clientList.add(clientMapper);
-        });
-    }
 
     public void saveCategoryInDataBase(Map<String, String> data ) throws ApplicationException {
         ClientDao clientDao = new ClientDao(DbManager.getConnectionSource());
@@ -62,5 +62,37 @@ public class ClientModel {
         clientDao.createOrUpdate(client);
         DbManager.closeConnectionDB();
         init();
+    }
+
+    public ClientMapper getClientMapperObjectProperty() {
+        return clientMapperObjectProperty.get();
+    }
+
+    public ObjectProperty<ClientMapper> clientMapperObjectPropertyProperty() {
+        return clientMapperObjectProperty;
+    }
+
+    public void setClientMapperObjectProperty(ClientMapper clientMapperObjectProperty) {
+        this.clientMapperObjectProperty.set(clientMapperObjectProperty);
+    }
+
+    public ClientMapper getClientMapperObjectPropertyEdit() {
+        return clientMapperObjectPropertyEdit.get();
+    }
+
+    public ObjectProperty<ClientMapper> clientMapperObjectPropertyEditProperty() {
+        return clientMapperObjectPropertyEdit;
+    }
+
+    public void setClientMapperObjectPropertyEdit(ClientMapper clientMapperObjectPropertyEdit) {
+        this.clientMapperObjectPropertyEdit.set(clientMapperObjectPropertyEdit);
+    }
+
+    public ObservableList<ClientMapper> getClientMapperObservableList() {
+        return clientMapperObservableList;
+    }
+
+    public void setClientMapperObservableList(ObservableList<ClientMapper> clientMapperObservableList) {
+        this.clientMapperObservableList = clientMapperObservableList;
     }
 }

@@ -11,8 +11,9 @@ import pl.project.pk.models.ClientModel;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ClientController {
+public class ClientCreateController {
 
+    /* widok dodawania nowego clienta */
     @FXML
     public TextField firstName;
 
@@ -39,6 +40,7 @@ public class ClientController {
     @FXML
     public void initialize() throws ApplicationException {
         this.clientModel = new ClientModel();
+        this.clientModel.init();
         this.initBindings();
     }
 
@@ -61,7 +63,6 @@ public class ClientController {
     }
 
     public void saveClient(ActionEvent actionEvent) throws ApplicationException {
-
         Map<String, String> dataForm = new HashMap<String, String>();
         dataForm.put(ClientModel.FIELD_NAME_FIRST_NAME,firstName.getText());
         dataForm.put(ClientModel.FIELD_NAME_LAST_NAME,lastName.getText());
