@@ -5,14 +5,14 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import pl.project.pk.utils.FxmlUtils;
+import pl.project.pk.utils.ModalUtils;
 
-import java.io.IOException;
-import java.util.ResourceBundle;
+import java.util.Optional;
 
 public class MainController {
 
@@ -29,22 +29,16 @@ public class MainController {
 
 
     public void setCenter(String fxmlPath){
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource(fxmlPath));
-        ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages");
-        loader.setResources(bundle);
-        Parent parent = null;
-        try {
-            parent = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        borderPane.setCenter(parent);
+        borderPane.setCenter(FxmlUtils.fxmlLoader(fxmlPath));
     }
 
     public void closeApplication() {
-        Platform.exit();
-        System.exit(0);
+
+        Optional<ButtonType> result = ModalUtils.modalConfirmation();
+        if(result.get() == ButtonType.OK) {
+            Platform.exit();
+            System.exit(0);
+        }
     }
 
     public void setCapion() {
@@ -63,5 +57,6 @@ public class MainController {
 
 
     public void popUpAbout() {
+        ModalUtils.modalAboutApplication();
     }
 }
