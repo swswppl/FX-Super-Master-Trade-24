@@ -1,7 +1,11 @@
 package pl.project.pk.database.dao;
 
-/**
- * Created by patrykprzybek on 26.01.2018.
- */
-public class ClientDao {
+
+import com.j256.ormlite.support.ConnectionSource;
+
+public class ClientDao extends BaseDao {
+
+    public ClientDao(ConnectionSource connectionSource) {
+        super(connectionSource);
+    }
 }

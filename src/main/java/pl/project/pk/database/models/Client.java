@@ -1,4 +1,4 @@
-package pl.project.pk.models;
+package pl.project.pk.database.models;
 
 
 import com.j256.ormlite.field.DatabaseField;
@@ -21,8 +21,11 @@ public class Client implements BaseModel {
     @DatabaseField(columnName = "last_name", canBeNull = false)
     private String lastname;
 
+    @DatabaseField(columnName = "address", canBeNull = false)
+    private String address;
+
     @DatabaseField(columnName = "salary", canBeNull = false)
-    private long salary;
+    private String salary;
 
     @DatabaseField(columnName = "email", canBeNull = false)
     private String email;
@@ -63,11 +66,15 @@ public class Client implements BaseModel {
         this.lastname = lastname;
     }
 
-    public long getSalary() {
+    public String getAddress() {return address; }
+
+    public void setAddress(String address) { this.address = address;}
+
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(long salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 
@@ -102,4 +109,6 @@ public class Client implements BaseModel {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+
 }

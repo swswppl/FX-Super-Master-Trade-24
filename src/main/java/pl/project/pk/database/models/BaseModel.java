@@ -1,4 +1,4 @@
-package pl.project.pk.models;
+package pl.project.pk.database.models;
 
 
 public interface BaseModel {

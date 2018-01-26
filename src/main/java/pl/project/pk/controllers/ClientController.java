@@ -1,7 +1,76 @@
 package pl.project.pk.controllers;
 
-/**
- * Created by patrykprzybek on 26.01.2018.
- */
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import org.omg.CORBA.portable.ApplicationException;
+import pl.project.pk.models.ClientModel;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class ClientController {
+
+    @FXML
+    public TextField firstName;
+
+    @FXML
+    public TextField lastName;
+
+    @FXML
+    public TextField address;
+
+    @FXML
+    public TextField salary;
+
+    @FXML
+    public TextField email;
+
+    @FXML
+    public TextField phone;
+
+    @FXML
+    public Button saveClientButton;
+
+    private ClientModel clientModel;
+
+    @FXML
+    public void initialize(){
+        this.clientModel = new ClientModel();
+        this.initBindings();
+    }
+
+    private void initBindings() {
+        saveClientButton.disableProperty().bind(firstName.textProperty().isEmpty());
+        saveClientButton.disableProperty().bind(lastName.textProperty().isEmpty());
+        saveClientButton.disableProperty().bind(address.textProperty().isEmpty());
+        saveClientButton.disableProperty().bind(salary.textProperty().isEmpty());
+        saveClientButton.disableProperty().bind(email.textProperty().isEmpty());
+        saveClientButton.disableProperty().bind(phone.textProperty().isEmpty());
+    }
+
+    private void clearAllTextField(){
+        firstName.clear();
+        lastName.clear();
+        address.clear();
+        salary.clear();
+        email.clear();
+        phone.clear();
+    }
+
+    public void saveClient(ActionEvent actionEvent) throws ApplicationException {
+
+        Map<String, String> dataForm = new HashMap<String, String>();
+        dataForm.put(ClientModel.FIELD_NAME_FIRST_NAME,firstName.getText());
+        dataForm.put(ClientModel.FIELD_NAME_LAST_NAME,lastName.getText());
+        dataForm.put(ClientModel.FIELD_NAME_ADDRESS,address.getText());
+        dataForm.put(ClientModel.FIELD_NAME_SALARY,salary.getText());
+        dataForm.put(ClientModel.FIELD_NAME_EMAIL,email.getText());
+        dataForm.put(ClientModel.FIELD_NAME_PHONE,phone.getText());
+
+        clientModel.saveCategoryInDataBase(dataForm);
+        this.clearAllTextField();
+    }
 }
