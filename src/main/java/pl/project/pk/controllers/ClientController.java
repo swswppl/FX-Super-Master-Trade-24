@@ -37,18 +37,18 @@ public class ClientController {
     private ClientModel clientModel;
 
     @FXML
-    public void initialize(){
+    public void initialize() throws ApplicationException {
         this.clientModel = new ClientModel();
         this.initBindings();
     }
 
     private void initBindings() {
-        saveClientButton.disableProperty().bind(firstName.textProperty().isEmpty());
-        saveClientButton.disableProperty().bind(lastName.textProperty().isEmpty());
-        saveClientButton.disableProperty().bind(address.textProperty().isEmpty());
-        saveClientButton.disableProperty().bind(salary.textProperty().isEmpty());
-        saveClientButton.disableProperty().bind(email.textProperty().isEmpty());
-        saveClientButton.disableProperty().bind(phone.textProperty().isEmpty());
+        this.saveClientButton.disableProperty().bind(firstName.textProperty().isEmpty());
+        this.saveClientButton.disableProperty().bind(lastName.textProperty().isEmpty());
+        this.saveClientButton.disableProperty().bind(address.textProperty().isEmpty());
+        this.saveClientButton.disableProperty().bind(salary.textProperty().isEmpty());
+        this.saveClientButton.disableProperty().bind(email.textProperty().isEmpty());
+        this.saveClientButton.disableProperty().bind(phone.textProperty().isEmpty());
     }
 
     private void clearAllTextField(){

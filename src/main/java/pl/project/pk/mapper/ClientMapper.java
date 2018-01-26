@@ -9,7 +9,7 @@ public class ClientMapper {
     private StringProperty firstName = new SimpleStringProperty();
     private StringProperty lastname = new SimpleStringProperty();
     private StringProperty address = new SimpleStringProperty();
-    private LongProperty salary = new SimpleLongProperty();
+    private StringProperty salary = new SimpleStringProperty();
     private StringProperty email = new SimpleStringProperty();
     private StringProperty phone = new SimpleStringProperty();
 
@@ -61,15 +61,15 @@ public class ClientMapper {
         this.address.set(address);
     }
 
-    public long getSalary() {
+    public String getSalary() {
         return salary.get();
     }
 
-    public LongProperty salaryProperty() {
+    public StringProperty salaryProperty() {
         return salary;
     }
 
-    public void setSalary(long salary) {
+    public void setSalary(String salary) {
         this.salary.set(salary);
     }
 

@@ -20,6 +20,8 @@ public abstract class BaseDao {
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseDao.class);
     protected final ConnectionSource connectionSource;
 
+    //TODO: AplicationExcepion wlasny dodac
+
     public BaseDao(ConnectionSource connectionSource){
         this.connectionSource = DbManager.getConnectionSource();
     }
