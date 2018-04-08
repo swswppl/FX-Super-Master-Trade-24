@@ -10,7 +10,7 @@ import pl.project.pk.database.dao.VendorDao;
 import pl.project.pk.database.dbutils.DbManager;
 import pl.project.pk.database.models.Vendor;
 import pl.project.pk.mapper.VendorMapper;
-import pl.project.pk.utils.converters.ConverterVendor;
+import pl.project.pk.utils.converters.ConventerVendor;
 
 import java.util.Date;
 import java.util.List;
@@ -37,7 +37,7 @@ public class VendorModel {
 
         this.vendorMapperObservableList.clear();
         vendorList.forEach(vendor -> {
-            VendorMapper vendorMapper = ConverterVendor.convertToVendorMapper(vendor);
+            VendorMapper vendorMapper = ConventerVendor.convertToVendorMapper(vendor);
             this.vendorMapperObservableList.add(vendorMapper);
         });
         DbManager.closeConnectionDB();

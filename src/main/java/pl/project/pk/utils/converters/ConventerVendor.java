@@ -4,7 +4,7 @@ package pl.project.pk.utils.converters;
 import pl.project.pk.database.models.Vendor;
 import pl.project.pk.mapper.VendorMapper;
 
-public class ConverterVendor {
+public class ConventerVendor {
 
     public static Vendor convertToVendor(VendorMapper vendorMapper){
         Vendor vendor = new Vendor();

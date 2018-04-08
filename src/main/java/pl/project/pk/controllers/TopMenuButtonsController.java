@@ -7,8 +7,10 @@ public class TopMenuButtonsController {
 
     private static final String STORE_INVESTMENTS_FXML = "/fxml/store/Investments.fxml";
     private static final String STORE_CLIENTS_FXML = "/fxml/store/Clients.fxml";
+    private static final String STORE_VENDORS_FXML = "/fxml/store/Vendors.fxml";
     private static final String STORE_STATISTICS_FXML = "/fxml/store/Statistics.fxml";
     private static final String ADD_CLIENTS_FXML = "/fxml/form/AddClients.fxml";
+    private static final String ADD_VENDORS_FXML = "/fxml/form/AddVendors.fxml";
 
     private MainController mainController;
 
@@ -24,6 +26,11 @@ public class TopMenuButtonsController {
     public void openClients() {
         mainController.setCenter(STORE_CLIENTS_FXML);
     }
+    
+    @FXML
+    public void openVendors() {
+        mainController.setCenter(STORE_VENDORS_FXML);
+    }
 
     @FXML
     public void openStatistic() {
@@ -34,6 +41,12 @@ public class TopMenuButtonsController {
     public void addClient(){
         this.resetToggleButtons();
         mainController.setCenter(ADD_CLIENTS_FXML);
+    }
+    
+    @FXML
+    public void addVendor(){
+        this.resetToggleButtons();
+        mainController.setCenter(ADD_VENDORS_FXML);
     }
 
     public void setMainController(MainController mainController) {
