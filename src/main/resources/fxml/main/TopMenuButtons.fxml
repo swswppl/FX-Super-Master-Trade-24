@@ -16,14 +16,22 @@
          </toggleGroup>
       </ToggleButton>
   	 <ToggleButton mnemonicParsing="false" onAction="#openClients" prefHeight="80.0" prefWidth="150.0" text="%menu.clients" toggleGroup="$toggleGroups" />
-       <!--   <ToggleButton mnemonicParsing="false" onAction="#openVendors" prefHeight="80.0" prefWidth="150.0" text="%menu.vendors" toggleGroup="$toggleGroups" />-->
+      <ToggleButton mnemonicParsing="false" onAction="#openVendors" prefHeight="80.0" prefWidth="150.0" text="%menu.vendors" toggleGroup="$toggleGroups" />
       <ToggleButton mnemonicParsing="false" onAction="#openStatistic" prefHeight="80.0" prefWidth="150.0" text="%menu.statistic" toggleGroup="$toggleGroups" />
       <Button mnemonicParsing="false" onAction="#addClient" prefHeight="80.0" prefWidth="150.0" text="%menu.add_clients">
-      <!-- <Button mnemonicParsing="false" onAction="#addVendor" prefHeight="80.0" prefWidth="150.0" text="%menu.add_vendors">-->
-         <graphic>
+        <graphic>
             <ImageView fitHeight="42.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icons/add_client.png" />
+               <!--     <Image url="@../../icons/add_vendor.png" /> -->
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#addVendor" prefHeight="80.0" prefWidth="150.0" text="%menu.add_vendors">
+         <graphic>
+            <ImageView fitHeight="42.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
                   <Image url="@../../icons/add_vendor.png" />
                </image>
             </ImageView>
